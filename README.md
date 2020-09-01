@@ -4,10 +4,10 @@ Um crud feito com python e mysql
 Esse crud é feito 100% sem interface gráfica. É feito para quem está iniciando os estudos e dá uma boa noção sobre trabalhos com banco de dados.
 O sistema é feito seguindo boas práticas com vários arquivos separados. São ao todo:
 
-login.py
-main.py
-app.py
-database.py
+login.py,
+main.py,
+app.py,
+database.py,
 company_script_mysql
 
 # Como funciona
