@@ -4,6 +4,7 @@ opção é selecionada no arquivo main
 '''
 # importando a classe Database do arquivo database.py
 from database import Database
+import main
 
 # instanciando o banco de dados utilizado lá no arquivo database
 db=Database('company')
@@ -20,9 +21,16 @@ def novo_registro():
 # consultar um registro do banco de dados (SELECT)
 def consultar_registro():
     print('\n    ###### CONSULTAR REGISTRO ######')
-    fname=input('    Primeiro nome: ')
-    lname=input('    Sobrenome: ')
-    db.consulta_nome(fname, lname)
+    option=int(input('    1. Consultar um\n    2. Consultar todos\n    --> '))
+    if option == 1:
+        fname=input('    Primeiro nome: ')
+        lname=input('    Sobrenome: ')
+        db.consulta_nome(fname, lname)
+    elif option == 2:
+        db.consulta_todos()
+    else:
+        print('    Opção Inválida!')
+        consultar_registro()
 
 # editar um registro no banco de dados
 def editar_registro():

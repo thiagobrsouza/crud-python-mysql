@@ -24,17 +24,64 @@ def menu():
 
     if option == 1:
         app.novo_registro()
+        repete=int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        while repete != 2:
+            app.novo_registro()
+            repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        else:
+            if repete == 2:
+                menu()
+            else:
+                print('    Opção Inválida!')
+                menu()
+
+
     elif option == 2:
         app.consultar_registro()
+        repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        while repete != 2:
+            app.consultar_registro()
+            repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        else:
+            if repete == 2:
+                menu()
+            else:
+                print('    Opção Inválida!')
+                menu()
+
     elif option == 3:
         app.editar_registro()
+        repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        while repete != 2:
+            app.editar_registro()
+            repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        else:
+            if repete == 2:
+                menu()
+            else:
+                print('    Opção Inválida!')
+                menu()
+
     elif option == 4:
         app.excluir_registro()
+        repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        while repete != 2:
+            app.excluir_registro()
+            repete = int(input('\n    1.Repetir Operação\n    2. Menu principal\n    --> '))
+        else:
+            if repete == 2:
+                menu()
+            else:
+                print('    Opção Inválida!')
+                menu()
+
+
     elif option == 5:
         login.tela_login()
     else:
         print('    Opção Inválida!')
         exit()
+
 
 
 # chamar a função menu ao executar o main.py

@@ -44,7 +44,20 @@ class Database:
         self.cursor.execute('SELECT * FROM funcionarios WHERE fname= %s AND lname= %s ORDER BY fname',
                             (fname, lname))
         resultado=self.cursor.fetchall()
-        print('\n   ', self.cursor.rowcount, 'total de registros encontrados!')
+        print('\n   ', self.cursor.rowcount, 'total de registros encontrados!\n')
+        for x in resultado:
+            print('    ID Funcionário = ', x[0], )
+            print('    Primeiro Nome  = ', x[1])
+            print('    Último Nome    = ', x[2])
+            print('    Cargo          = ', x[3])
+            print('    Salário (R$)   = ', x[4], '\n')
+
+
+    # consultando todos os dados do banco
+    def consulta_todos(self):
+        self.cursor.execute('SELECT * FROM funcionarios ORDER BY fname ASC')
+        resultado = self.cursor.fetchall()
+        print('\n   ', self.cursor.rowcount, 'total de registros encontrados!\n')
         for x in resultado:
             print('    ID Funcionário = ', x[0], )
             print('    Primeiro Nome  = ', x[1])
