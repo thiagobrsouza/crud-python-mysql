@@ -46,11 +46,17 @@ class Database:
         resultado=self.cursor.fetchall()
         print('\n   ', self.cursor.rowcount, 'total de registros encontrados!\n')
         for x in resultado:
-            print('    ID Funcionário = ', x[0], )
+            print('    ID Funcionário = ', x[0])
             print('    Primeiro Nome  = ', x[1])
             print('    Último Nome    = ', x[2])
             print('    Cargo          = ', x[3])
             print('    Salário (R$)   = ', x[4], '\n')
+
+    def consulta_id(self, idfunc):
+        self.cursor.execute('SELECT * FROM funcionarios WHERE idfunc= %s',
+                            (idfunc,))
+        print('\n   ', self.cursor.rowcount, 'total de registros encontrados!\n')
+        print('    ',self.cursor.fetchone(),'\n')
 
 
     # consultando todos os dados do banco
@@ -59,7 +65,7 @@ class Database:
         resultado = self.cursor.fetchall()
         print('\n   ', self.cursor.rowcount, 'total de registros encontrados!\n')
         for x in resultado:
-            print('    ID Funcionário = ', x[0], )
+            print('    ID Funcionário = ', x[0])
             print('    Primeiro Nome  = ', x[1])
             print('    Último Nome    = ', x[2])
             print('    Cargo          = ', x[3])
@@ -67,33 +73,33 @@ class Database:
 
 
     # editando o cargo após informar o funcionário. Esse método será chamado pela função editar_registro no app.py
-    def edit_cargo(self, cargo, fname, lname):
-        self.cursor.execute('UPDATE funcionarios SET cargo= %s WHERE fname= %s AND lname= %s',
-                            (cargo, fname, lname))
+    def edit_cargo(self, cargo, idfunc):
+        self.cursor.execute('UPDATE funcionarios SET cargo= %s WHERE idfunc= %s',
+                            (cargo, idfunc))
         self.connect.commit()
         print('\n   ',self.cursor.rowcount, 'registro(s) atualizado(s)!')
 
 
     # editando o salário após informar o funcionário. Esse método será chamado pela função editar_registro no app.py
-    def edit_salario(self, salario, fname, lname):
-        self.cursor.execute('UPDATE funcionarios SET salario= %s WHERE fname= %s AND lname= %s',
-                            (salario, fname, lname))
+    def edit_salario(self, salario, idfunc):
+        self.cursor.execute('UPDATE funcionarios SET salario= %s WHERE idfunc= %s',
+                            (salario, idfunc))
         self.connect.commit()
         print('\n   ',self.cursor.rowcount, 'registro(s) atualizado(s)!')
 
 
     # editando ambos cargo e salário. Esse método será chamado pela função editar_registro no app.py
-    def edit_ambos(self, cargo, salario, fname, lname):
-        self.cursor.execute('UPDATE funcionarios SET cargo= %s, salario= %s WHERE fname= %s AND lname= %s',
-                            (cargo, salario, fname, lname))
+    def edit_ambos(self, cargo, salario, idfunc):
+        self.cursor.execute('UPDATE funcionarios SET cargo= %s, salario= %s WHERE idfunc= %s',
+                            (cargo, salario, idfunc))
         self.connect.commit()
         print('\n   ', self.cursor.rowcount, 'registro(s) atualizado(s)!')
 
 
     # excluindo um registro. Esse método será chamado pela função excluir_registro no app.py
-    def delete_func(self, fname, lname):
-        self.cursor.execute('DELETE FROM funcionarios WHERE fname= %s AND lname= %s',
-                            (fname, lname))
+    def delete_func(self, idfunc):
+        self.cursor.execute('DELETE FROM funcionarios WHERE idfunc= %s',
+                            (idfunc))
         self.connect.commit()
         print('\n   ',self.cursor.rowcount, 'registro excluido com sucesso!')
 

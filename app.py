@@ -4,7 +4,6 @@ opção é selecionada no arquivo main
 '''
 # importando a classe Database do arquivo database.py
 from database import Database
-import main
 
 # instanciando o banco de dados utilizado lá no arquivo database
 db=Database('company')
@@ -35,32 +34,30 @@ def consultar_registro():
 # editar um registro no banco de dados
 def editar_registro():
     print('\n    ###### EDITAR UM REGISTRO ######')
-    fname=input('    Primeiro nome: ')
-    lname=input('    Sobrenome: ')
-    db.consulta_nome(fname, lname)
+    idfunc=input('    ID do funcionário: ')
+    db.consulta_id(idfunc)
     option=int(input('    1. Editar cargo\n    2. Editar salário\n    3. Ambos\n    --> '))
     if option == 1:
         novo_cargo=input('    Novo cargo: ')
-        db.edit_cargo(novo_cargo, fname, lname)
+        db.edit_cargo(novo_cargo, idfunc)
     elif option == 2:
         novo_salario=float(input('    Novo salário: '))
-        db.edit_salario(novo_salario, fname, lname)
+        db.edit_salario(novo_salario, idfunc)
     elif option == 3:
         novo_cargo=input('    Novo cargo: ')
         novo_salario=float(input('    Novo salário: '))
-        db.edit_ambos(novo_cargo, novo_salario, fname, lname)
+        db.edit_ambos(novo_cargo, novo_salario, idfunc)
     else:
         print('    Opção inválida!')
 
 # excluir um registro do banco de dados
 def excluir_registro():
     print('\n    ###### EXCLUIR UM REGISTRO ######')
-    fname=input('    Primeiro nome: ')
-    lname=input('    Sobrenome: ')
-    db.consulta_nome(fname, lname)
+    idfunc=int(input('    ID do funcionário: '))
+    db.consulta_id(idfunc)
     option=int(input('    1. Confirmar exclusão\n    2. Cancelar\n    --> '))
     if option == 1:
-        db.delete_func(fname, lname)
+        db.delete_func(idfunc)
     elif option == 2:
         exit()
     else:
